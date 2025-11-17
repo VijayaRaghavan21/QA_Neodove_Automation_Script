@@ -1,0 +1,97 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "login-functionality;successful-login-with-valid-credentials",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Successful login with valid credentials",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 338659100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I open the login page",
+            "match": {
+              "location": "src\\steps\\loginpage_steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6406646799
+            },
+            "embeddings": [
+              {
+                "data": "TmF2aWdhdGVkIHRvIExvZ2luIFBhZ2U=",
+                "mime_type": "text/plain"
+              }
+            ]
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "I login with valid credentials",
+            "match": {
+              "location": "src\\steps\\loginpage_steps.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 520613499
+            },
+            "embeddings": [
+              {
+                "data": "TG9nZ2VkIGluIHN1Y2Nlc3NmdWxseQ==",
+                "mime_type": "text/plain"
+              }
+            ]
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "I should see the dashboard",
+            "match": {
+              "location": "src\\steps\\loginpage_steps.js:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2923100999
+            },
+            "embeddings": [
+              {
+                "data": "RGFzaGJvYXJkIHBhZ2UgdmVyaWZpZWQ=",
+                "mime_type": "text/plain"
+              }
+            ]
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 278741700
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "login-functionality",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Login functionality",
+    "tags": [],
+    "uri": "src\\features\\Login.feature"
+  }
+]
