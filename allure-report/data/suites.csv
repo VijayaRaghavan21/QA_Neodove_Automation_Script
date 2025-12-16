@@ -1,3 +1,5 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","12259","Creating a new Pipeline","","Sun Nov 16 10:15:37 IST 2025","passed","Sun Nov 16 10:15:49 IST 2025","","","",""
-"","5787","Successful login with valid credentials","","Sun Nov 16 10:15:31 IST 2025","passed","Sun Nov 16 10:15:37 IST 2025","","","",""
+"","1120","Validate uploaded Excel data appears correctly inside the campaign","","Tue Dec 16 22:48:29 IST 2025","passed","Tue Dec 16 22:48:30 IST 2025","","","",""
+"","11791","Add Leads to the Campaign","","Tue Dec 16 22:48:17 IST 2025","passed","Tue Dec 16 22:48:29 IST 2025","","","",""
+"","6997","Create New Campaign","","Tue Dec 16 22:48:10 IST 2025","passed","Tue Dec 16 22:48:17 IST 2025","","","",""
+"","7071","Successful login with valid credentials","","Tue Dec 16 22:48:03 IST 2025","passed","Tue Dec 16 22:48:10 IST 2025","","","",""

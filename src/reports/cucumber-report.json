@@ -6,345 +6,470 @@
         "description": "",
         "id": "login-functionality;successful-login-with-valid-credentials",
         "keyword": "Scenario",
-        "line": 3,
+        "line": 4,
         "name": "Successful login with valid credentials",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 427100
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 4,
+            "line": 5,
             "name": "I open the login page",
             "match": {
               "location": "src\\steps\\loginpage_steps.js:6"
             },
             "result": {
-              "status": "skipped",
-              "duration": 0
-            }
+              "status": "passed",
+              "duration": 3291530500
+            },
+            "embeddings": [
+              {
+                "data": "TmF2aWdhdGVkIHRvIExvZ2luIFBhZ2U=",
+                "mime_type": "text/plain"
+              }
+            ]
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 5,
+            "line": 6,
             "name": "I login with valid credentials",
             "match": {
               "location": "src\\steps\\loginpage_steps.js:14"
             },
             "result": {
-              "status": "skipped",
-              "duration": 0
-            }
+              "status": "passed",
+              "duration": 600816700
+            },
+            "embeddings": [
+              {
+                "data": "TG9nZ2VkIGluIHN1Y2Nlc3NmdWxseQ==",
+                "mime_type": "text/plain"
+              }
+            ]
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 6,
+            "line": 7,
             "name": "I should see the dashboard",
             "match": {
               "location": "src\\steps\\loginpage_steps.js:22"
             },
             "result": {
-              "status": "skipped",
-              "duration": 0
-            }
+              "status": "passed",
+              "duration": 3170406299
+            },
+            "embeddings": [
+              {
+                "data": "RGFzaGJvYXJkIHBhZ2UgdmVyaWZpZWQ=",
+                "mime_type": "text/plain"
+              }
+            ]
           },
           {
             "keyword": "After",
             "hidden": true,
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 452600
             }
           }
         ],
-        "tags": [],
+        "tags": [
+          {
+            "name": "@run",
+            "line": 1
+          }
+        ],
         "type": "scenario"
       }
     ],
     "id": "login-functionality",
-    "line": 1,
+    "line": 2,
     "keyword": "Feature",
     "name": "Login functionality",
-    "tags": [],
-    "uri": "src\\features\\Login.feature"
-  },
-  {
-    "description": "",
-    "elements": [
+    "tags": [
       {
-        "description": "",
-        "id": "pipeline-creation;creating-a-new-pipeline",
-        "keyword": "Scenario",
-        "line": 3,
-        "name": "Creating a new Pipeline",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 4,
-            "name": "Navigate to settings page , Open the Pipeline Tab",
-            "match": {
-              "location": "src\\steps\\pipelinecreationsteps.js:7"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 5,
-            "name": "Using the Create Pipeline , Adding the Pipeline",
-            "match": {
-              "location": "src\\steps\\pipelinecreationsteps.js:13"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 6,
-            "name": "I should see the Pipeline in the Pipeline list",
-            "match": {
-              "location": "src\\steps\\pipelinecreationsteps.js:19"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
+        "name": "@run",
+        "line": 1
       }
     ],
-    "id": "pipeline-creation",
-    "line": 1,
-    "keyword": "Feature",
-    "name": "Pipeline Creation",
-    "tags": [],
-    "uri": "src\\features\\PipelineCreation.feature"
+    "uri": "src\\features\\01_Login.feature"
   },
   {
     "description": "",
     "elements": [
       {
         "description": "",
-        "id": "pipeline-scenarios;edit-pipeline",
+        "id": "creating-a-new-campaign-and-adding-leads-inside-the-campaign;create-new-campaign",
         "keyword": "Scenario",
-        "line": 3,
-        "name": "Edit Pipeline",
+        "line": 5,
+        "name": "Create New Campaign",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 138399
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 4,
-            "name": "Navigate to the Pipeline",
-            "match": {
-              "location": "file:\\C:\\Users\\NEODOVE-playwright-bdd-framework\\src\\steps\\pipelinescenarios_steps.js:6"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 5,
-            "name": "Edit the Pipeline",
-            "match": {
-              "location": "file:\\C:\\Users\\NEODOVE-playwright-bdd-framework\\src\\steps\\pipelinescenarios_steps.js:19"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
             "line": 6,
-            "name": "Updated the Pipeline Sucessfully",
+            "name": "Choosing the Pipeline where to Create the Campaign",
             "match": {
-              "location": "file:\\C:\\Users\\NEODOVE-playwright-bdd-framework\\src\\steps\\pipelinescenarios_steps.js:29"
+              "location": "src\\steps\\Campaigncreationsteps.js:7"
             },
             "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "pipeline-scenarios;with-existing-pipeline-name-,-the-new-pipeline-should-not-create",
-        "keyword": "Scenario",
-        "line": 9,
-        "name": "With Existing Pipeline Name , The New Pipeline Should not create",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 10,
-            "name": "Navigate to the Pipeline",
-            "match": {
-              "location": "file:\\C:\\Users\\NEODOVE-playwright-bdd-framework\\src\\steps\\pipelinescenarios_steps.js:6"
+              "status": "passed",
+              "duration": 2332975300
             },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
+            "embeddings": [
+              {
+                "data": "UGlwZWxpbmUgU2VsZWN0ZWQgZm9yIENhbXBhaWduIENyZWF0aW9u",
+                "mime_type": "text/plain"
+              }
+            ]
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 11,
-            "name": "Using the Create Pipeline , Enter the exiting pipeline name and create",
+            "line": 7,
+            "name": "Click on Create Campaign",
+            "match": {
+              "location": "src\\steps\\Campaigncreationsteps.js:14"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
-            }
+              "status": "passed",
+              "duration": 2176078400
+            },
+            "embeddings": [
+              {
+                "data": "Q3JlYXRlIENhbXBhaWduIEJ1dHRvbiBDbGlja2Vk",
+                "mime_type": "text/plain"
+              }
+            ]
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "Give the Name for Campaign",
+            "match": {
+              "location": "src\\steps\\Campaigncreationsteps.js:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2106757400
+            },
+            "embeddings": [
+              {
+                "data": "Q2FtcGFpZ24gTmFtZSBFbnRlcmVk",
+                "mime_type": "text/plain"
+              }
+            ]
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "Choosing the Users to assign inside the Campaign",
+            "match": {
+              "location": "src\\steps\\Campaigncreationsteps.js:29"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 133729400
+            },
+            "embeddings": [
+              {
+                "data": "VXNlcnMgU2VsZWN0ZWQgZm9yIENhbXBhaWduIENyZWF0aW9u",
+                "mime_type": "text/plain"
+              }
+            ]
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "Choosing the Lead Distribution type",
+            "match": {
+              "location": "src\\steps\\Campaigncreationsteps.js:37"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 74813699
+            },
+            "embeddings": [
+              {
+                "data": "TGVhZCBEaXN0cmlidXRpb24gVHlwZSBTZWxlY3RlZCBmb3IgQ2FtcGFpZ24gQ3JlYXRpb24=",
+                "mime_type": "text/plain"
+              }
+            ]
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 12,
-            "name": "It should display an error message \"Pipeline already exists, kindly update the name and try again.\"",
+            "line": 11,
+            "name": "Campaign should create successfully",
+            "match": {
+              "location": "src\\steps\\Campaigncreationsteps.js:44"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
-            }
+              "status": "passed",
+              "duration": 165234100
+            },
+            "embeddings": [
+              {
+                "data": "Q2FtcGFpZ24gQ3JlYXRlZCBhbmQgVmVyaWZpZWQgU3VjY2Vzc2Z1bGx5",
+                "mime_type": "text/plain"
+              }
+            ]
           },
           {
             "keyword": "After",
             "hidden": true,
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 299100
             }
           }
         ],
-        "tags": [],
+        "tags": [
+          {
+            "name": "@run",
+            "line": 1
+          }
+        ],
         "type": "scenario"
       },
       {
         "description": "",
-        "id": "pipeline-scenarios;delete-pipeline",
+        "id": "creating-a-new-campaign-and-adding-leads-inside-the-campaign;add-leads-to-the-campaign",
         "keyword": "Scenario",
-        "line": 14,
-        "name": "Delete Pipeline",
+        "line": 13,
+        "name": "Add Leads to the Campaign",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 152300
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 15,
-            "name": "Navigate to Pipeline",
+            "name": "Upload Leads After Campaign Creation",
+            "match": {
+              "location": "src\\steps\\Campaigncreationsteps.js:54"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
-            }
+              "status": "passed",
+              "duration": 5147855700
+            },
+            "embeddings": [
+              {
+                "data": "TGVhZHMgVXBsb2FkZWQgdG8gQ2FtcGFpZ24gU3VjY2Vzc2Z1bGx5",
+                "mime_type": "text/plain"
+              }
+            ]
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 16,
-            "name": "Edit the Pipeline , Clicking on Delete",
+            "name": "Mapping the Fields the with the Column in the excel",
+            "match": {
+              "location": "src\\steps\\Campaigncreationsteps.js:63"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
-            }
+              "status": "passed",
+              "duration": 2672381600
+            },
+            "embeddings": [
+              {
+                "data": "TWFwcGluZyBvZiBDb2x1bW5zIGZvciBVcGxvYWRpbmcgTGVhZHMgQ29tcGxldGVkIFN1Y2Nlc3NmdWxseQ==",
+                "mime_type": "text/plain"
+              }
+            ]
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 17,
-            "name": "Pipeline Should be deleted Sucessfully",
+            "name": "Lead Should Upload successfully",
+            "match": {
+              "location": "src\\steps\\Campaigncreationsteps.js:71"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
-            }
+              "status": "passed",
+              "duration": 3966246600
+            },
+            "embeddings": [
+              {
+                "data": "TGVhZHMgVXBsb2FkIHRvIENhbXBhaWduIFZlcmlmaWVkIFN1Y2Nlc3NmdWxseQ==",
+                "mime_type": "text/plain"
+              }
+            ]
           },
           {
             "keyword": "After",
             "hidden": true,
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 200900
             }
           }
         ],
-        "tags": [],
+        "tags": [
+          {
+            "name": "@run",
+            "line": 1
+          }
+        ],
         "type": "scenario"
       }
     ],
-    "id": "pipeline-scenarios",
-    "line": 1,
+    "id": "creating-a-new-campaign-and-adding-leads-inside-the-campaign",
+    "line": 3,
     "keyword": "Feature",
-    "name": "Pipeline Scenarios",
-    "tags": [],
-    "uri": "src\\features\\PipelineScenarios.feature"
+    "name": "Creating a New Campaign and Adding leads inside the Campaign",
+    "tags": [
+      {
+        "name": "@run",
+        "line": 1
+      }
+    ],
+    "uri": "src\\features\\04_Campaigncreation.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "leads-verification;validate-uploaded-excel-data-appears-correctly-inside-the-campaign",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Validate uploaded Excel data appears correctly inside the campaign",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 161799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "Opening the lead Summary page inside the campaign",
+            "match": {
+              "location": "file:\\C:\\Users\\NEODOVE-playwright-bdd-framework\\src\\steps\\leads_verify.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 92552500
+            },
+            "embeddings": [
+              {
+                "data": "TmF2aWdhdGVkIHRvIExlYWQgU3VtbWFyeSBQYWdl",
+                "mime_type": "text/plain"
+              }
+            ]
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "All the Leads will Display",
+            "match": {
+              "location": "file:\\C:\\Users\\NEODOVE-playwright-bdd-framework\\src\\steps\\leads_verify.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 503193699
+            },
+            "embeddings": [
+              {
+                "data": "TGVhZHMgU3VtbWFyeSBQYWdlIERpc3BsYXllZA==",
+                "mime_type": "text/plain"
+              }
+            ]
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "Confirm the Lead in the Excel File are displayed inside the campaign",
+            "match": {
+              "location": "file:\\C:\\Users\\NEODOVE-playwright-bdd-framework\\src\\steps\\leads_verify.js:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 520682399
+            },
+            "embeddings": [
+              {
+                "data": "RXhjZWwgQ291bnQ6IDIwCkNSTSBDb3VudDogMjA=",
+                "mime_type": "text/plain"
+              },
+              {
+                "data": "RXhjZWwgTW9iaWxlIE51bWJlcnM6Cgo5ODc2NTQzMjEwCjkxMjM0NTY3ODAKOTk4ODc3NjY1NQo5MDkwOTA5MDkwCjk4MTIzNDU2NzgKOTg3NjEwMjM0NQo5MTIzOTg3NjU0CjkwOTg3NjU0MzIKOTkxMTIyMzM0NAo5ODExMTIyMjMzCjkwMDExMjIzMzQKOTk4ODAwNzc2Ngo5ODIyMTEwMDMzCjk3OTc5Nzk3OTcKOTgxMDA5ODEwMAo4ODc3NjY1NTQ0CjkxMjMwMDExMjIKODg1NTQ0MzMyMgo5ODExMjIxMTAwCjk5MTE5OTg4Nzc=",
+                "mime_type": "text/plain"
+              },
+              {
+                "data": "Q1JNIE1vYmlsZSBOdW1iZXJzOgoKOTkxMTk5ODg3Nwo5ODExMjIxMTAwCjg4NTU0NDMzMjIKOTEyMzAwMTEyMgo4ODc3NjY1NTQ0Cjk4MTAwOTgxMDAKOTc5Nzk3OTc5Nwo5ODIyMTEwMDMzCjk5ODgwMDc3NjYKOTAwMTEyMjMzNAo5ODExMTIyMjMzCjk5MTEyMjMzNDQKOTA5ODc2NTQzMgo5MTIzOTg3NjU0Cjk4NzYxMDIzNDUKOTgxMjM0NTY3OAo5MDkwOTA5MDkwCjk5ODg3NzY2NTUKOTEyMzQ1Njc4MAo5ODc2NTQzMjEw",
+                "mime_type": "text/plain"
+              },
+              {
+                "data": "4pyFIEFsbCBFeGNlbCBtb2JpbGUgbnVtYmVycyBhcmUgcHJlc2VudCBpbiBDUk0=",
+                "mime_type": "text/plain"
+              }
+            ]
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 212999
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@run",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "leads-verification",
+    "line": 3,
+    "keyword": "Feature",
+    "name": "Leads Verification",
+    "tags": [
+      {
+        "name": "@run",
+        "line": 1
+      }
+    ],
+    "uri": "src\\features\\05_Leadsverify.feature"
   }
 ]

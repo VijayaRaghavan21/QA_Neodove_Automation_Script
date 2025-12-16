@@ -36,6 +36,8 @@ Before(async function () {
 // Take screenshot on failure but don't close browser
 After(async function (scenario) {
   if (scenario.result?.status === 'FAILED') {
+    const error = scenario.result.exception || scenario.result;
+    console.error('\n❌ Scenario failed with error:\n', error?.stack || error);
     const screenshot = await this.page.screenshot();
     await this.attach(screenshot, 'image/png');
     console.log("❌ Scenario failed — Screenshot captured");

@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 import { AUTOMATION_CONSTANTS } from "../enums/enum.js";
 
-export class PipelineScenarios {
+export class Pipelinecreation {
 
     constructor(page) {
 
@@ -10,38 +10,43 @@ export class PipelineScenarios {
         // Locators
         this.settings_icon = "//span[contains(text(),'Settings')]";
         this.pipeline_tab = "//div[contains(text(),'Pipelines')]";
-        this.choose_pipeline_from_list = "(//div[contains(@class, 'mat-select-arrow')])[1]";
-        this.select_pipeline =
-            `//mat-option//span[contains(@class, 'mat-option-text') 
-                and normalize-space(text())='${AUTOMATION_CONSTANTS.PIPELINE_NAME}']`;
-
-        this.edit_pipeline_button = "//span[normalize-space()='Edit']";
-        this.update_pipeline_button = "//span[normalize-space()='UPDATE']";
-        this.pipeline_update_success_message =
-            "//span[@class='alert-message' and contains(text(), 'Pipeline updated successfully.')]";
+        this.create_pipeline_button = "//span[normalize-space()='Create Pipeline']";
+        this.pipeline_name_input = "//div[contains(@class,'mat-form-field-infix') and .//mat-label[normalize-space() = 'Pipeline Name']]//input";  // FIXED
+        this.save_pipeline_button = "//span[normalize-space()='Create']";
+        this.pipeline_list = "//a[@id='nd-campaigns']//span[@class='mat-list-item-content']"; // FIXED
     }
 
-
-    async edit_existing_pipeline() {
-
+    async navigate_to_pipeline_creation_page() {
         await this.page.click(this.settings_icon);
         await this.page.click(this.pipeline_tab);
-        await this.page.click(this.choose_pipeline_from_list);
-        await this.page.click(this.select_pipeline);
+    }
+
+    async create_new_pipeline(pipeline_name) {
+
+        await this.page.click(this.create_pipeline_button);
+
+        const input = this.page.locator(this.pipeline_name_input);
+
+        await input.click();
+       await this.page.waitForTimeout(2000);
+        await input.press('Control+A');
+        await input.press('Delete');
+        await input.fill(pipeline_name);
+
+        await this.page.click(this.save_pipeline_button);
+        await this.page.waitForTimeout(3000);
+    }
+
+    async pipeline_creation_verification() {
+
+        await this.page.click(this.pipeline_list);
 
         await this.page.waitForTimeout(2000);
 
-        await this.page.click(this.edit_pipeline_button);
-        await this.page.waitForTimeout(2000);
+        await expect(
+            this.page.locator(`//span[contains(text(),'${AUTOMATION_CONSTANTS.PIPELINE_NAME}')]`)
+        ).toBeVisible();
 
-        await this.page.click(this.update_pipeline_button);
-        await this.page.waitForTimeout(2000);
-
-        const successMessage =
-            await this.page.locator(this.pipeline_update_success_message).innerText();
-
-        expect(successMessage).toContain("Pipeline updated successfully.");
-
-        console.log("Pipeline updated successfully verified.");
+        console.log("Pipeline created successfully and verified.");
     }
 }
