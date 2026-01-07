@@ -1,4 +1,4 @@
-import { PipelineScenarios } from "../pages/pipelinescenarios.js";
+import { PipelineScenarios } from "../pages/PipelineScenarios.js";
 import { Given, When, Then } from "@cucumber/cucumber";
 import { AUTOMATION_CONSTANTS } from '../enums/enum.js';
 

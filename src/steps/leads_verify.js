@@ -25,6 +25,7 @@ Then(
     const result =
       await this.leadsverify.validateAllExcelMobilesPresent();
 
+
     // Summary
     await this.attach(
       `Excel Count: ${result.excelCount}\nCRM Count: ${result.crmCount}`,
@@ -46,7 +47,7 @@ Then(
     // Missing mobiles
     if (result.missingMobiles.length > 0) {
       await this.attach(
-        `❌ Missing Mobile Numbers:\n\n${result.missingMobiles.join('\n')}`,
+        ` Missing Mobile Numbers:\n\n${result.missingMobiles.join('\n')}`,
         'text/plain'
       );
     } else {
@@ -58,5 +59,36 @@ Then(
   }
 );
 
+Then(
+  'Verify All the Leads in Start Calling flow in Dialer Portal',
+  async function () {
 
+    this.leadsverify = new Leadsverify(this.page);
 
+    // 1️⃣ Get CRM mobiles BEFORE switching portal
+    const crmMobiles = await this.leadsverify.getCRMMobiles();
+
+    if (crmMobiles.length === 0) {
+      console.log('No CRM leads found. Skipping Start Calling validation.');
+      return;
+    }
+
+    // 2️⃣ Start Calling
+    await this.leadsverify.openStartCalling();
+
+    // 3️⃣ Validate + Dispose ALL leads
+    await this.leadsverify.verifyAllLeadsInStartCalling(crmMobiles);
+
+    // 4️⃣ Safe attachment
+    try {
+      await this.attach(
+        'All Start Calling leads validated against CRM mobiles',
+        'text/plain'
+      );
+    } catch {
+      console.log('Attach skipped');
+    }
+
+    return; // explicit finish
+  }
+);

@@ -12,7 +12,7 @@ Given('I open the login page', async function () {
 });
 
 When('I login with valid credentials', async function () {
-    await this.loginPage.login('2345678901', '12345');
+    await this.loginPage.login('5432154321', '12345');
     await this.attach('Logged in successfully', 'text/plain');
 
 

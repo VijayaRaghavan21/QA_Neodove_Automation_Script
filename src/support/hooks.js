@@ -36,13 +36,30 @@ Before(async function () {
 // Take screenshot on failure but don't close browser
 After(async function (scenario) {
   if (scenario.result?.status === 'FAILED') {
-    const error = scenario.result.exception || scenario.result;
-    console.error('\n❌ Scenario failed with error:\n', error?.stack || error);
-    const screenshot = await this.page.screenshot();
-    await this.attach(screenshot, 'image/png');
-    console.log("❌ Scenario failed — Screenshot captured");
+
+    // ✅ 1️⃣ ALWAYS log failure clearly
+    console.error('\n❌ SCENARIO FAILED ❌');
+    console.error('Scenario:', scenario.pickle?.name);
+
+    if (scenario.result?.exception) {
+      console.error('Error:', scenario.result.exception.stack || scenario.result.exception);
+    } else {
+      console.error('Result:', scenario.result);
+    }
+
+    // ✅ 2️⃣ Screenshot (NON-BLOCKING)
+    try {
+      if (this.page && !this.page.isClosed()) {
+        const screenshot = await this.page.screenshot({ timeout: 5000 });
+        await this.attach(screenshot, 'image/png');
+        console.log('📸 Screenshot attached');
+      }
+    } catch (err) {
+      console.log('⚠️ Screenshot skipped:', err.message);
+    }
   }
 });
+
 
 // Close browser only after all scenarios are finished
 AfterAll(async function () {

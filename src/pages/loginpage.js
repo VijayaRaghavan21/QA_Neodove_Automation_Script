@@ -23,7 +23,7 @@ export class loginpage{
 
     async navigate_to_login_Url (){
 
-        await this.login_page.goto("https://app-s2.neodove.com/login");
+        await this.login_page.goto("https://connect.neodove.com/login");
     }
 
     async login(username,password){
