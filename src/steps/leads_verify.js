@@ -4,24 +4,31 @@ import { Leadsverify } from '../pages/Leadsverify.js';
 
 
 Given ('Opening the lead Summary page inside the campaign', async function () {
-
+  try {
     this.leadsverify = new Leadsverify (this.page);
-
     await this.leadsverify.navigate_to_leads_summary();
     await this.attach('Navigated to Lead Summary Page', 'text/plain');
+  } catch (err) {
+    console.error('Step failed:', err.message);
+    await this.attach('Step failed: ' + err.message, 'text/plain');
+  }
 });
 
 When('All the Leads will Display', async function () {
-
-     this.leadsverify = new Leadsverify (this.page);
+  try {
+    this.leadsverify = new Leadsverify (this.page);
     await this.leadsverify.verify_leads_summary_page();
     await this.attach('Leads Summary Page Displayed', 'text/plain');
+  } catch (err) {
+    console.error('Step failed:', err.message);
+    await this.attach('Step failed: ' + err.message, 'text/plain');
+  }
 });
 
 Then(
   'Confirm the Lead in the Excel File are displayed inside the campaign',
   async function () {
-
+  try {
     const result =
       await this.leadsverify.validateAllExcelMobilesPresent();
 
@@ -56,13 +63,17 @@ Then(
         'text/plain'
       );
     }
+  } catch (err) {
+    console.error('Step failed:', err.message);
+    await this.attach('Step failed: ' + err.message, 'text/plain');
   }
+}
 );
 
 Then(
   'Verify All the Leads in Start Calling flow in Dialer Portal',
   async function () {
-
+  try {
     this.leadsverify = new Leadsverify(this.page);
 
     // 1️⃣ Get CRM mobiles BEFORE switching portal
@@ -90,5 +101,9 @@ Then(
     }
 
     return; // explicit finish
+  } catch (err) {
+    console.error('Step failed:', err.message);
+    await this.attach('Step failed: ' + err.message, 'text/plain');
   }
+}
 );

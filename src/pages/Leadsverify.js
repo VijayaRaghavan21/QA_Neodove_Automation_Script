@@ -69,6 +69,7 @@ export class Leadsverify {
   this.leads_completed_text = this.page.getByText('Leads completed', { exact: true });
 
 
+
 }
 
   async navigate_to_leads_summary() {
@@ -160,6 +161,8 @@ async openStartCalling() {
   );
 
   await startCallingBtn.click();
+
+  await this.page.waitForTimeout(3000); // short wait for dialer load
   
   console.log('Start Calling clicked');
 }
@@ -266,3 +269,4 @@ async isLeadsCompleted() {
 
 
 }
+

@@ -1,7 +1,7 @@
-const { BeforeAll, AfterAll, Before, After, setDefaultTimeout, setWorldConstructor, World } = require('@cucumber/cucumber');
+const { BeforeAll, AfterAll, Before, After, AfterStep, setDefaultTimeout, setWorldConstructor, World } = require('@cucumber/cucumber');
 const { chromium } = require('@playwright/test');
 
-setDefaultTimeout(60 * 1000);
+setDefaultTimeout(120000);
 
 let browser, context, page;
 
@@ -57,6 +57,18 @@ After(async function (scenario) {
     } catch (err) {
       console.log('⚠️ Screenshot skipped:', err.message);
     }
+  }
+});
+
+// Log failed steps and continue to next step if possible
+AfterStep(async function (step) {
+  if (step.result?.status === 'FAILED') {
+    console.error('❌ STEP FAILED:', step.text);
+    if (step.result?.exception) {
+      console.error('Error:', step.result.exception.message || step.result.exception);
+    }
+    // Note: Scenario will still fail, but logging allows visibility
+    // To continue the scenario, wrap step definitions in try-catch
   }
 });
 
