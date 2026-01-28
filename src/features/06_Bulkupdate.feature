@@ -12,10 +12,18 @@ Scenario: Follow up leads are coming in the Dialer portal under follow up leads
   When I Click the My Leads
   And I Click on Start Calling under Follow up leads
   Then All Leads Should display in the Start Calling Flow
-@run
 
 Scenario: Copy Leads to different Campaign
   Given Switch to admin Portal and select the Pipeline
   When Creating a New Campaign for copy leads
   And Copying Leads from existing campaign to Another Campaign
   Then Verify all the leads are copied to the destination Campaign
+
+@run
+Scenario: Move Leads to different Campaign
+
+  Given Switch to admin Portal and select the Pipeline
+  When Creating a New Campaign for move leads
+  And Move Leads from existing campaign to Another Campaign
+  Then Verify all the leads are moved to the destination Campaign
+

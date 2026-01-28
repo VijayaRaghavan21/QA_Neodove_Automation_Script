@@ -95,7 +95,7 @@ export class bulkupdate {
 
         //Navaiate to Campaign Page
 
-        //await this.swtich_to_admin_portal.click();
+        await this.swtich_to_admin_portal.click();
 
         await this.page.click(this.select_pipeline_list);
         await this.page.click(this.select_pipeline);

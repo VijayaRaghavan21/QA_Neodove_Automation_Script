@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 517100
+              "duration": 420399
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3326580398
+              "duration": 3868272798
             },
             "embeddings": [
               {
@@ -46,7 +46,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 588686298
+              "duration": 509518100
             },
             "embeddings": [
               {
@@ -65,7 +65,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3436798799
+              "duration": 1943551199
             },
             "embeddings": [
               {
@@ -79,7 +79,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1040599
+              "duration": 816199
             }
           }
         ],
@@ -109,30 +109,30 @@
     "elements": [
       {
         "description": "",
-        "id": "bulk-update-verification-in-campaign;copy-leads-to-different-campaign",
+        "id": "bulk-update-verification-in-campaign;move-leads-to-different-campaign",
         "keyword": "Scenario",
-        "line": 17,
-        "name": "Copy Leads to different Campaign",
+        "line": 23,
+        "name": "Move Leads to different Campaign",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 257799
+              "duration": 104699
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 18,
+            "line": 25,
             "name": "Switch to admin Portal and select the Pipeline",
             "match": {
-              "location": "file:\\C:\\Users\\NEODOVE-playwright-bdd-framework\\src\\steps\\bulkupdate_steps.js:107"
+              "location": "file:\\C:\\Users\\NEODOVE-playwright-bdd-framework\\src\\steps\\bulkupdate_steps.js:108"
             },
             "result": {
               "status": "passed",
-              "duration": 2386394199
+              "duration": 19859629599
             },
             "embeddings": [
               {
@@ -144,14 +144,14 @@
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 19,
-            "name": "Creating a New Campaign for copy leads",
+            "line": 26,
+            "name": "Creating a New Campaign for move leads",
             "match": {
-              "location": "file:\\C:\\Users\\NEODOVE-playwright-bdd-framework\\src\\steps\\bulkupdate_steps.js:119"
+              "location": "file:\\C:\\Users\\NEODOVE-playwright-bdd-framework\\src\\steps\\bulkupdate_steps.js:195"
             },
             "result": {
               "status": "passed",
-              "duration": 4719428199
+              "duration": 39265965300
             },
             "embeddings": [
               {
@@ -179,22 +179,18 @@
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 20,
-            "name": "Copying Leads from existing campaign to Another Campaign",
+            "line": 27,
+            "name": "Move Leads from existing campaign to Another Campaign",
             "match": {
-              "location": "file:\\C:\\Users\\NEODOVE-playwright-bdd-framework\\src\\steps\\bulkupdate_steps.js:153"
+              "location": "file:\\C:\\Users\\NEODOVE-playwright-bdd-framework\\src\\steps\\bulkupdate_steps.js:229"
             },
             "result": {
               "status": "passed",
-              "duration": 8577517200
+              "duration": 48259535798
             },
             "embeddings": [
               {
-                "data": "T3BlbmVkIExlYWQgU3VtbWFyeSBwYWdlIGluIGV4aXN0aW5nIENhbXBhaWduICBmb3IgY29weWluZyBsZWFkcyB0byBvdGhlcg==",
-                "mime_type": "text/plain"
-              },
-              {
-                "data": "TGVhZHMgY29waWVkIHRvIGFub3RoZXIgY2FtcGFpZ24gc3VjY2Vzc2Z1bGx5",
+                "data": "U3RlcCBmYWlsZWQ6IGxvY2F0b3IuY2xpY2s6IFRhcmdldCBwYWdlLCBjb250ZXh0IG9yIGJyb3dzZXIgaGFzIGJlZW4gY2xvc2VkCkNhbGwgbG9nOgobWzJtICAtIHdhaXRpbmcgZm9yIGxvY2F0b3IoJ2xhYmVsLm1hdC1jaGVja2JveC1sYXlvdXQnKS5sb2NhdG9yKCdzcGFuJykuZmlyc3QoKRtbMjJtChtbMm0gICAgLSBsb2NhdG9yIHJlc29sdmVkIHRvIDxzcGFuIGNsYXNzPSJtYXQtY2hlY2tib3gtaW5uZXItY29udGFpbmVyIG1hdC1jaGVja2JveC1pbm5lci1jb250YWluZXItbm8tc2lkZS1tYXJnaW4iPuKApjwvc3Bhbj4bWzIybQobWzJtICAtIGF0dGVtcHRpbmcgY2xpY2sgYWN0aW9uG1syMm0KG1sybSAgICAyIMOXIHdhaXRpbmcgZm9yIGVsZW1lbnQgdG8gYmUgdmlzaWJsZSwgZW5hYmxlZCBhbmQgc3RhYmxlG1syMm0KG1sybSAgICAgIC0gZWxlbWVudCBpcyB2aXNpYmxlLCBlbmFibGVkIGFuZCBzdGFibGUbWzIybQobWzJtICAgICAgLSBzY3JvbGxpbmcgaW50byB2aWV3IGlmIG5lZWRlZBtbMjJtChtbMm0gICAgICAtIGRvbmUgc2Nyb2xsaW5nG1syMm0KG1sybSAgICAgIC0gPGRpdiBjbGFzcz0ib3ZlcmxheSIgX25nY29udGVudC1zeHAtYzU3OD0iIj7igKY8L2Rpdj4gZnJvbSA8YXBwLWxvYWRlciBfbmdob3N0LXN4cC1jNTc4PSIiIF9uZ2NvbnRlbnQtc3hwLWM1Nzk9IiI+4oCmPC9hcHAtbG9hZGVyPiBzdWJ0cmVlIGludGVyY2VwdHMgcG9pbnRlciBldmVudHMbWzIybQobWzJtICAgIC0gcmV0cnlpbmcgY2xpY2sgYWN0aW9uG1syMm0KG1sybSAgICAtIHdhaXRpbmcgMjBtcxtbMjJtChtbMm0gICAgMiDDlyB3YWl0aW5nIGZvciBlbGVtZW50IHRvIGJlIHZpc2libGUsIGVuYWJsZWQgYW5kIHN0YWJsZRtbMjJtChtbMm0gICAgICAtIGVsZW1lbnQgaXMgdmlzaWJsZSwgZW5hYmxlZCBhbmQgc3RhYmxlG1syMm0KG1sybSAgICAgIC0gc2Nyb2xsaW5nIGludG8gdmlldyBpZiBuZWVkZWQbWzIybQobWzJtICAgICAgLSBkb25lIHNjcm9sbGluZxtbMjJtChtbMm0gICAgICAtIDxkaXYgY2xhc3M9Im92ZXJsYXkiIF9uZ2NvbnRlbnQtc3hwLWM1Nzg9IiI+4oCmPC9kaXY+IGZyb20gPGFwcC1sb2FkZXIgX25naG9zdC1zeHAtYzU3OD0iIiBfbmdjb250ZW50LXN4cC1jNTc5PSIiPuKApjwvYXBwLWxvYWRlcj4gc3VidHJlZSBpbnRlcmNlcHRzIHBvaW50ZXIgZXZlbnRzG1syMm0KG1sybSAgICAtIHJldHJ5aW5nIGNsaWNrIGFjdGlvbhtbMjJtChtbMm0gICAgICAtIHdhaXRpbmcgMTAwbXMbWzIybQobWzJtICAgIC0gd2FpdGluZyBmb3IgZWxlbWVudCB0byBiZSB2aXNpYmxlLCBlbmFibGVkIGFuZCBzdGFibGUbWzIybQobWzJtICAtIGVsZW1lbnQgd2FzIGRldGFjaGVkIGZyb20gdGhlIERPTSwgcmV0cnlpbmcbWzIybQobWzJtICAgIC0gbG9jYXRvciByZXNvbHZlZCB0byA8c3BhbiBjbGFzcz0ibWF0LWNoZWNrYm94LWlubmVyLWNvbnRhaW5lciBtYXQtY2hlY2tib3gtaW5uZXItY29udGFpbmVyLW5vLXNpZGUtbWFyZ2luIj7igKY8L3NwYW4+G1syMm0KG1sybSAgLSBhdHRlbXB0aW5nIGNsaWNrIGFjdGlvbhtbMjJtChtbMm0gICAgMiDDlyB3YWl0aW5nIGZvciBlbGVtZW50IHRvIGJlIHZpc2libGUsIGVuYWJsZWQgYW5kIHN0YWJsZRtbMjJtChtbMm0gICAgICAtIGVsZW1lbnQgaXMgdmlzaWJsZSwgZW5hYmxlZCBhbmQgc3RhYmxlG1syMm0KG1sybSAgICAgIC0gc2Nyb2xsaW5nIGludG8gdmlldyBpZiBuZWVkZWQbWzIybQobWzJtICAgICAgLSBkb25lIHNjcm9sbGluZxtbMjJtChtbMm0gICAgICAtIDxkaXYgY2xhc3M9Im92ZXJsYXkiIF9uZ2NvbnRlbnQtc3hwLWM1Nzg9IiI+4oCmPC9kaXY+IGZyb20gPGFwcC1sb2FkZXIgX25naG9zdC1zeHAtYzU3OD0iIiBfbmdjb250ZW50LXN4cC1jNTc5PSIiPuKApjwvYXBwLWxvYWRlcj4gc3VidHJlZSBpbnRlcmNlcHRzIHBvaW50ZXIgZXZlbnRzG1syMm0KG1sybSAgICAtIHJldHJ5aW5nIGNsaWNrIGFjdGlvbhtbMjJtChtbMm0gICAgLSB3YWl0aW5nIDIwbXMbWzIybQobWzJtICAgIDIgw5cgd2FpdGluZyBmb3IgZWxlbWVudCB0byBiZSB2aXNpYmxlLCBlbmFibGVkIGFuZCBzdGFibGUbWzIybQobWzJtICAgICAgLSBlbGVtZW50IGlzIHZpc2libGUsIGVuYWJsZWQgYW5kIHN0YWJsZRtbMjJtChtbMm0gICAgICAtIHNjcm9sbGluZyBpbnRvIHZpZXcgaWYgbmVlZGVkG1syMm0KG1sybSAgICAgIC0gZG9uZSBzY3JvbGxpbmcbWzIybQobWzJtICAgICAgLSA8ZGl2IGNsYXNzPSJvdmVybGF5IiBfbmdjb250ZW50LXN4cC1jNTc4PSIiPuKApjwvZGl2PiBmcm9tIDxhcHAtbG9hZGVyIF9uZ2hvc3Qtc3hwLWM1Nzg9IiIgX25nY29udGVudC1zeHAtYzU3OT0iIj7igKY8L2FwcC1sb2FkZXI+IHN1YnRyZWUgaW50ZXJjZXB0cyBwb2ludGVyIGV2ZW50cxtbMjJtChtbMm0gICAgLSByZXRyeWluZyBjbGljayBhY3Rpb24bWzIybQobWzJtICAgICAgLSB3YWl0aW5nIDEwMG1zG1syMm0KG1sybSAgICAzNiDDlyB3YWl0aW5nIGZvciBlbGVtZW50IHRvIGJlIHZpc2libGUsIGVuYWJsZWQgYW5kIHN0YWJsZRtbMjJtChtbMm0gICAgICAgLSBlbGVtZW50IGlzIHZpc2libGUsIGVuYWJsZWQgYW5kIHN0YWJsZRtbMjJtChtbMm0gICAgICAgLSBzY3JvbGxpbmcgaW50byB2aWV3IGlmIG5lZWRlZBtbMjJtChtbMm0gICAgICAgLSBkb25lIHNjcm9sbGluZxtbMjJtChtbMm0gICAgICAgLSA8ZGl2IGNsYXNzPSJvdmVybGF5IiBfbmdjb250ZW50LXN4cC1jNTc4PSIiPuKApjwvZGl2PiBmcm9tIDxhcHAtbG9hZGVyIF9uZ2hvc3Qtc3hwLWM1Nzg9IiIgX25nY29udGVudC1zeHAtYzU3OT0iIj7igKY8L2FwcC1sb2FkZXI+IHN1YnRyZWUgaW50ZXJjZXB0cyBwb2ludGVyIGV2ZW50cxtbMjJtChtbMm0gICAgIC0gcmV0cnlpbmcgY2xpY2sgYWN0aW9uG1syMm0KG1sybSAgICAgICAtIHdhaXRpbmcgNTAwbXMbWzIybQobWzJtICAtIGVsZW1lbnQgd2FzIGRldGFjaGVkIGZyb20gdGhlIERPTSwgcmV0cnlpbmcbWzIybQobWzJtICAgIC0gbG9jYXRvciByZXNvbHZlZCB0byA8c3BhbiBjbGFzcz0ibWF0LWNoZWNrYm94LWlubmVyLWNvbnRhaW5lciBtYXQtY2hlY2tib3gtaW5uZXItY29udGFpbmVyLW5vLXNpZGUtbWFyZ2luIj7igKY8L3NwYW4+G1syMm0KG1sybSAgLSBhdHRlbXB0aW5nIGNsaWNrIGFjdGlvbhtbMjJtChtbMm0gICAgLSB3YWl0aW5nIGZvciBlbGVtZW50IHRvIGJlIHZpc2libGUsIGVuYWJsZWQgYW5kIHN0YWJsZRtbMjJtChtbMm0gICAgLSBlbGVtZW50IGlzIHZpc2libGUsIGVuYWJsZWQgYW5kIHN0YWJsZRtbMjJtChtbMm0gICAgLSBzY3JvbGxpbmcgaW50byB2aWV3IGlmIG5lZWRlZBtbMjJtChtbMm0gICAgLSBkb25lIHNjcm9sbGluZxtbMjJtChtbMm0gICAgLSA8ZGl2IGNsYXNzPSJvdmVybGF5IiBfbmdjb250ZW50LXh5ZC1jNTc4PSIiPuKApjwvZGl2PiBmcm9tIDxhcHAtbG9hZGVyIF9uZ2hvc3QteHlkLWM1Nzg9IiIgX25nY29udGVudC14eWQtYzU3OT0iIj7igKY8L2FwcC1sb2FkZXI+IHN1YnRyZWUgaW50ZXJjZXB0cyBwb2ludGVyIGV2ZW50cxtbMjJtChtbMm0gIC0gcmV0cnlpbmcgY2xpY2sgYWN0aW9uG1syMm0KG1sybSAgICAtIHdhaXRpbmcgZm9yIGVsZW1lbnQgdG8gYmUgdmlzaWJsZSwgZW5hYmxlZCBhbmQgc3RhYmxlG1syMm0KG1sybSAgICAtIGVsZW1lbnQgaXMgbm90IHN0YWJsZRtbMjJtChtbMm0gIC0gcmV0cnlpbmcgY2xpY2sgYWN0aW9uG1syMm0KG1sybSAgICAtIHdhaXRpbmcgMjBtcxtbMjJtChtbMm0gICAgLSB3YWl0aW5nIGZvciBlbGVtZW50IHRvIGJlIHZpc2libGUsIGVuYWJsZWQgYW5kIHN0YWJsZRtbMjJtChtbMm0gIC0gZWxlbWVudCB3YXMgZGV0YWNoZWQgZnJvbSB0aGUgRE9NLCByZXRyeWluZxtbMjJtChtbMm0gICAgLSBsb2NhdG9yIHJlc29sdmVkIHRvIDxzcGFuIGNsYXNzPSJtYXQtY2hlY2tib3gtaW5uZXItY29udGFpbmVyIG1hdC1jaGVja2JveC1pbm5lci1jb250YWluZXItbm8tc2lkZS1tYXJnaW4iPuKApjwvc3Bhbj4bWzIybQobWzJtICAtIGF0dGVtcHRpbmcgY2xpY2sgYWN0aW9uG1syMm0KG1sybSAgICAyIMOXIHdhaXRpbmcgZm9yIGVsZW1lbnQgdG8gYmUgdmlzaWJsZSwgZW5hYmxlZCBhbmQgc3RhYmxlG1syMm0KG1sybSAgICAgIC0gZWxlbWVudCBpcyB2aXNpYmxlLCBlbmFibGVkIGFuZCBzdGFibGUbWzIybQobWzJtICAgICAgLSBzY3JvbGxpbmcgaW50byB2aWV3IGlmIG5lZWRlZBtbMjJtChtbMm0gICAgICAtIGRvbmUgc2Nyb2xsaW5nG1syMm0KG1sybSAgICAgIC0gPGRpdiBjbGFzcz0ib3ZlcmxheSIgX25nY29udGVudC14eWQtYzU3OD0iIj7igKY8L2Rpdj4gZnJvbSA8YXBwLWxvYWRlciBfbmdob3N0LXh5ZC1jNTc4PSIiIF9uZ2NvbnRlbnQteHlkLWM1Nzk9IiI+4oCmPC9hcHAtbG9hZGVyPiBzdWJ0cmVlIGludGVyY2VwdHMgcG9pbnRlciBldmVudHMbWzIybQobWzJtICAgIC0gcmV0cnlpbmcgY2xpY2sgYWN0aW9uG1syMm0KG1sybSAgICAtIHdhaXRpbmcgMjBtcxtbMjJtChtbMm0gICAgMiDDlyB3YWl0aW5nIGZvciBlbGVtZW50IHRvIGJlIHZpc2libGUsIGVuYWJsZWQgYW5kIHN0YWJsZRtbMjJtChtbMm0gICAgICAtIGVsZW1lbnQgaXMgdmlzaWJsZSwgZW5hYmxlZCBhbmQgc3RhYmxlG1syMm0KG1sybSAgICAgIC0gc2Nyb2xsaW5nIGludG8gdmlldyBpZiBuZWVkZWQbWzIybQobWzJtICAgICAgLSBkb25lIHNjcm9sbGluZxtbMjJtChtbMm0gICAgICAtIDxkaXYgY2xhc3M9Im92ZXJsYXkiIF9uZ2NvbnRlbnQteHlkLWM1Nzg9IiI+4oCmPC9kaXY+IGZyb20gPGFwcC1sb2FkZXIgX25naG9zdC14eWQtYzU3OD0iIiBfbmdjb250ZW50LXh5ZC1jNTc5PSIiPuKApjwvYXBwLWxvYWRlcj4gc3VidHJlZSBpbnRlcmNlcHRzIHBvaW50ZXIgZXZlbnRzG1syMm0KG1sybSAgICAtIHJldHJ5aW5nIGNsaWNrIGFjdGlvbhtbMjJtChtbMm0gICAgICAtIHdhaXRpbmcgMTAwbXMbWzIybQobWzJtICAgIDE0IMOXIHdhaXRpbmcgZm9yIGVsZW1lbnQgdG8gYmUgdmlzaWJsZSwgZW5hYmxlZCBhbmQgc3RhYmxlG1syMm0KG1sybSAgICAgICAtIGVsZW1lbnQgaXMgdmlzaWJsZSwgZW5hYmxlZCBhbmQgc3RhYmxlG1syMm0KG1sybSAgICAgICAtIHNjcm9sbGluZyBpbnRvIHZpZXcgaWYgbmVlZGVkG1syMm0KG1sybSAgICAgICAtIGRvbmUgc2Nyb2xsaW5nG1syMm0KG1sybSAgICAgICAtIDxkaXYgY2xhc3M9Im92ZXJsYXkiIF9uZ2NvbnRlbnQteHlkLWM1Nzg9IiI+4oCmPC9kaXY+IGZyb20gPGFwcC1sb2FkZXIgX25naG9zdC14eWQtYzU3OD0iIiBfbmdjb250ZW50LXh5ZC1jNTc5PSIiPuKApjwvYXBwLWxvYWRlcj4gc3VidHJlZSBpbnRlcmNlcHRzIHBvaW50ZXIgZXZlbnRzG1syMm0KG1sybSAgICAgLSByZXRyeWluZyBjbGljayBhY3Rpb24bWzIybQobWzJtICAgICAgIC0gd2FpdGluZyA1MDBtcxtbMjJtCg==",
                 "mime_type": "text/plain"
               }
             ]
@@ -202,18 +198,18 @@
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 21,
-            "name": "Verify all the leads are copied to the destination Campaign",
+            "line": 28,
+            "name": "Verify all the leads are moved to the destination Campaign",
             "match": {
-              "location": "file:\\C:\\Users\\NEODOVE-playwright-bdd-framework\\src\\steps\\bulkupdate_steps.js:169"
+              "location": "file:\\C:\\Users\\NEODOVE-playwright-bdd-framework\\src\\steps\\bulkupdate_steps.js:242"
             },
             "result": {
               "status": "passed",
-              "duration": 88076989498
+              "duration": 5642798
             },
             "embeddings": [
               {
-                "data": "QWxsIGxlYWRzIGNvcGllZCB0byB0aGUgZGVzdGluYXRpb24gQ2FtcGFpZ24gYW5kIHZlcmlmaWVkIHN1Y2Nlc3NmdWxseQ==",
+                "data": "U3RlcCBmYWlsZWQ6IHBhZ2Uud2FpdEZvclRpbWVvdXQ6IFRhcmdldCBwYWdlLCBjb250ZXh0IG9yIGJyb3dzZXIgaGFzIGJlZW4gY2xvc2Vk",
                 "mime_type": "text/plain"
               }
             ]
@@ -223,14 +219,14 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 207800
+              "duration": 77400
             }
           }
         ],
         "tags": [
           {
             "name": "@run",
-            "line": 15
+            "line": 22
           }
         ],
         "type": "scenario"
