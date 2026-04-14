@@ -3,7 +3,7 @@ name: Run Automation on Production Deployment
 on:
   repository_dispatch:
     types: [production-deployment]
-
+    workflow_dispatch:
 jobs:
   automation:
     runs-on: ubuntu-latest
