@@ -25,6 +25,15 @@ export class PipelineScenarios {
 
     async navigate_to_pipeline_page() {
 
+        // Dismiss any lingering overlay backdrop before navigating
+        try {
+            const backdrop = this.page.locator('.cdk-overlay-backdrop-showing');
+            if (await backdrop.isVisible({ timeout: 2000 })) {
+                await this.page.keyboard.press('Escape');
+                await this.page.waitForTimeout(500);
+            }
+        } catch { /* no backdrop */ }
+
         await this.page.click(this.settings_icon);
         await this.page.click(this.pipeline_tab);
 

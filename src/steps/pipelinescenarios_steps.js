@@ -2,10 +2,9 @@ import { PipelineScenarios } from "../pages/PipelineScenarios.js";
 import { Given, When, Then } from "@cucumber/cucumber";
 import { AUTOMATION_CONSTANTS } from '../enums/enum.js';
 
+/** @typedef {import('../support/hooks.js').CustomWorld} World */
 
-
-
-Given('Navigate to the Pipeline', async function () {
+Given('Navigate to the Pipeline', /** @this {World} */ async function () {
     try {
         this.pipelinescenarios = new PipelineScenarios(this.page);
 
@@ -17,11 +16,11 @@ Given('Navigate to the Pipeline', async function () {
     } catch (err) {
         console.error('Step failed:', err.message);
         await this.attach('Step failed: ' + err.message, 'text/plain');
+        throw err;
     }
 });
 
-
-When('Edit the Pipeline', async function () {
+When('Edit the Pipeline', /** @this {World} */ async function () {
     try {
         this.pipelinescenarios = new PipelineScenarios(this.page);
 
@@ -31,11 +30,11 @@ When('Edit the Pipeline', async function () {
     } catch (err) {
         console.error('Step failed:', err.message);
         await this.attach('Step failed: ' + err.message, 'text/plain');
+        throw err;
     }
 });
 
-
-Then('Updated the Pipeline Sucessfully', async function () {
+Then('Updated the Pipeline Sucessfully', /** @this {World} */ async function () {
     try {
         this.pipelinescenarios = new PipelineScenarios(this.page);
 
@@ -47,10 +46,11 @@ Then('Updated the Pipeline Sucessfully', async function () {
     } catch (err) {
         console.error('Step failed:', err.message);
         await this.attach('Step failed: ' + err.message, 'text/plain');
+        throw err;
     }
 });
 
-When('Using the Create Pipeline , Enter the exiting pipeline name and create', async function () {
+When('Using the Create Pipeline , Enter the exiting pipeline name and create', /** @this {World} */ async function () {
     try {
         this.pipelinescenarios = new PipelineScenarios(this.page);
 
@@ -60,10 +60,11 @@ When('Using the Create Pipeline , Enter the exiting pipeline name and create', a
     } catch (err) {
         console.error('Step failed:', err.message);
         await this.attach('Step failed: ' + err.message, 'text/plain');
+        throw err;
     }
 });
 
-Then('It should display an error message "Pipeline already exists, kindly update the name and try again."', async function () {
+Then('It should display an error message "Pipeline already exists, kindly update the name and try again."', /** @this {World} */ async function () {
     try {
         this.pipelinescenarios = new PipelineScenarios(this.page);
 
@@ -73,48 +74,34 @@ Then('It should display an error message "Pipeline already exists, kindly update
     } catch (err) {
         console.error('Step failed:', err.message);
         await this.attach('Step failed: ' + err.message, 'text/plain');
+        throw err;
     }
 });
 
-When('Clicking on Edit Pipeline , Delete the Pipeline', async function () {
-
+When('Clicking on Edit Pipeline , Delete the Pipeline', /** @this {World} */ async function () {
     try {
-
         this.pipelinescenarios = new PipelineScenarios(this.page);
 
         await this.pipelinescenarios.edit_existing_pipeline();
 
         await this.attach('Existing Pipeline Edited Successfully for Deletion', 'text/plain');
-
     } catch (err) {
-
         console.error('Step failed:', err.message);
-
         await this.attach('Step failed: ' + err.message, 'text/plain');
-
+        throw err;
     }
+});
 
-}
-);
-
-Then ('Pipeline Should be deleted Sucessfully', async function () {
-
+Then ('Pipeline Should be deleted Sucessfully', /** @this {World} */ async function () {
     try {
-
-        this.pipelinescenarios = new PipelineScenarios(this.page);  
+        this.pipelinescenarios = new PipelineScenarios(this.page);
 
         await this.pipelinescenarios.delete_existing_pipeline();
 
         await this.attach('Pipeline Deleted Sucessfully', 'text/plain');
-
     } catch (err) {
-
         console.error('Step failed:', err.message);
-
         await this.attach('Step failed: ' + err.message, 'text/plain');
-
+        throw err;
     }
-
-}   
-);
-
+});

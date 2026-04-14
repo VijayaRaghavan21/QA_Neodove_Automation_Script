@@ -1,9 +1,10 @@
 import { Given, When, Then } from '@cucumber/cucumber';
-import { expect } from '@playwright/test';
 import { Campaigncreation } from '../pages/Campaigncreation.js';
 import { AUTOMATION_CONSTANTS } from '../enums/enum.js';
 
-Given('Choosing the Pipeline where to Create the Campaign', async function() {
+/** @typedef {import('../support/hooks.js').CustomWorld} World */
+
+Given('Choosing the Pipeline where to Create the Campaign', /** @this {World} */ async function() {
   try {
     this.campaigncreation = new Campaigncreation(this.page);
 
@@ -12,10 +13,11 @@ Given('Choosing the Pipeline where to Create the Campaign', async function() {
   } catch (err) {
     console.error('Step failed:', err.message);
     await this.attach('Step failed: ' + err.message, 'text/plain');
+    throw err;
   }
 });
 
-When('Click on Create Campaign', async function () {
+When('Click on Create Campaign', /** @this {World} */ async function () {
   try {
     this.campaigncreation = new Campaigncreation(this.page);
 
@@ -24,10 +26,11 @@ When('Click on Create Campaign', async function () {
   } catch (err) {
     console.error('Step failed:', err.message);
     await this.attach('Step failed: ' + err.message, 'text/plain');
+    throw err;
   }
 });
 
-When('Give the Name for Campaign', async function () {
+When('Give the Name for Campaign', /** @this {World} */ async function () {
   try {
     this.campaigncreation = new Campaigncreation(this.page);
 
@@ -36,10 +39,11 @@ When('Give the Name for Campaign', async function () {
   } catch (err) {
     console.error('Step failed:', err.message);
     await this.attach('Step failed: ' + err.message, 'text/plain');
+    throw err;
   }
 });
 
-When ('Choosing the Users to assign inside the Campaign', async function () {
+When ('Choosing the Users to assign inside the Campaign', /** @this {World} */ async function () {
   try {
     this.campaigncreation = new Campaigncreation(this.page);
 
@@ -48,10 +52,11 @@ When ('Choosing the Users to assign inside the Campaign', async function () {
   } catch (err) {
     console.error('Step failed:', err.message);
     await this.attach('Step failed: ' + err.message, 'text/plain');
+    throw err;
   }
 });
 
-When('Choosing the Lead Distribution type', async function () {
+When('Choosing the Lead Distribution type', /** @this {World} */ async function () {
   try {
     this.campaigncreation = new Campaigncreation(this.page);
 
@@ -60,12 +65,13 @@ When('Choosing the Lead Distribution type', async function () {
   } catch (err) {
     console.error('Step failed:', err.message);
     await this.attach('Step failed: ' + err.message, 'text/plain');
+    throw err;
   }
 });
 
-Then('Campaign should create successfully', async function () {
+Then('Campaign should create successfully', /** @this {World} */ async function () {
   try {
-    this.campaigncreation = new Campaigncreation(this.page);    
+    this.campaigncreation = new Campaigncreation(this.page);
 
     await this.campaigncreation.click_on_create_button();
 
@@ -75,12 +81,11 @@ Then('Campaign should create successfully', async function () {
   } catch (err) {
     console.error('Step failed:', err.message);
     await this.attach('Step failed: ' + err.message, 'text/plain');
+    throw err;
   }
-}
+});
 
-);
-
-Given('Upload Leads After Campaign Creation', async function () {
+Given('Upload Leads After Campaign Creation', /** @this {World} */ async function () {
   try {
     this.campaigncreation = new Campaigncreation(this.page);
 
@@ -89,40 +94,32 @@ Given('Upload Leads After Campaign Creation', async function () {
   } catch (err) {
     console.error('Step failed:', err.message);
     await this.attach('Step failed: ' + err.message, 'text/plain');
+    throw err;
   }
 });
 
-When ('Mapping the Fields the with the Column in the excel', async function () {
+When ('Mapping the Fields the with the Column in the excel', /** @this {World} */ async function () {
   try {
-    this.campaigncreation =new Campaigncreation(this.page);
+    this.campaigncreation = new Campaigncreation(this.page);
 
     await this.campaigncreation.mapping_the_columns_for_uploading_leads();
     await this.attach('Mapping of Columns for Uploading Leads Completed Successfully', 'text/plain');
   } catch (err) {
     console.error('Step failed:', err.message);
     await this.attach('Step failed: ' + err.message, 'text/plain');
+    throw err;
   }
 });
 
-Then ('Lead Should Upload successfully', async function () {
-
+Then ('Lead Should Upload successfully', /** @this {World} */ async function () {
   try {
-
     this.campaigncreation = new Campaigncreation(this.page);
 
     await this.campaigncreation.verify_campaign_creation_for_lead_uploads();
     await this.attach('Leads Upload to Campaign Verified Successfully', 'text/plain');
-
   } catch (err) {
-
     console.error('Step failed:', err.message);
-
     await this.attach('Step failed: ' + err.message, 'text/plain');
-
-  }  
-
-}
-);
-
-
-
+    throw err;
+  }
+});

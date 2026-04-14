@@ -1,9 +1,9 @@
 import { Given, When, Then } from '@cucumber/cucumber';
-import { expect } from '@playwright/test';
 import { Leadsverify } from '../pages/Leadsverify.js';
 
+/** @typedef {import('../support/hooks.js').CustomWorld} World */
 
-Given ('Opening the lead Summary page inside the campaign', async function () {
+Given ('Opening the lead Summary page inside the campaign', /** @this {World} */ async function () {
   try {
     this.leadsverify = new Leadsverify (this.page);
     await this.leadsverify.navigate_to_leads_summary();
@@ -11,10 +11,11 @@ Given ('Opening the lead Summary page inside the campaign', async function () {
   } catch (err) {
     console.error('Step failed:', err.message);
     await this.attach('Step failed: ' + err.message, 'text/plain');
+    throw err;
   }
 });
 
-When('All the Leads will Display', async function () {
+When('All the Leads will Display', /** @this {World} */ async function () {
   try {
     this.leadsverify = new Leadsverify (this.page);
     await this.leadsverify.verify_leads_summary_page();
@@ -22,12 +23,13 @@ When('All the Leads will Display', async function () {
   } catch (err) {
     console.error('Step failed:', err.message);
     await this.attach('Step failed: ' + err.message, 'text/plain');
+    throw err;
   }
 });
 
 Then(
   'Confirm the Lead in the Excel File are displayed inside the campaign',
-  async function () {
+  /** @this {World} */ async function () {
   try {
     const result =
       await this.leadsverify.validateAllExcelMobilesPresent();
@@ -66,13 +68,14 @@ Then(
   } catch (err) {
     console.error('Step failed:', err.message);
     await this.attach('Step failed: ' + err.message, 'text/plain');
+    throw err;
   }
 }
 );
 
 Then(
   'Verify All the Leads in Start Calling flow in Dialer Portal',
-  async function () {
+  /** @this {World} */ async function () {
   try {
     this.leadsverify = new Leadsverify(this.page);
 
@@ -104,6 +107,7 @@ Then(
   } catch (err) {
     console.error('Step failed:', err.message);
     await this.attach('Step failed: ' + err.message, 'text/plain');
+    throw err;
   }
 }
 );

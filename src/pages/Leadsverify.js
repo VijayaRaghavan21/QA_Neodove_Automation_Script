@@ -157,7 +157,7 @@ async openStartCalling() {
     const startCallingBtn = this.page.locator(
     `//tr[
         td[contains(normalize-space(), '${AUTOMATION_CONSTANTS.Campaign_name}')]
-      ]//span[contains(normalize-space(), 'Start Calling')]`
+      ]//button[.//span[contains(normalize-space(), 'Start Calling')]]`
   );
 
   await startCallingBtn.click();
@@ -218,6 +218,7 @@ async isLeadsCompleted() {
   // ---------- Validate + Dispose ONE lead ----------
  async verifyAllLeadsInStartCalling(crmMobiles) {
   const processedMobiles = new Set();
+  let isFirstLead = true;
 
   while (true) {
     // 🛑 STOP CONDITION #1: Campaign completed
@@ -250,7 +251,11 @@ async isLeadsCompleted() {
       console.log(`✅ Mobile validated: ${currentMobile}`);
     }
 
-    // Dispose lead
+    // Dispose lead — wait for UI to load on the first lead only
+    if (isFirstLead) {
+      await this.page.waitForTimeout(3000);
+      isFirstLead = false;
+    }
     await this.dispose_lead_section.click();
     await this.not_connected_option.click();
     await this.did_not_pick_option.click();

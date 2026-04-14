@@ -11,8 +11,28 @@ class CustomWorld extends World {
     this.browser = browser;
     this.context = context;
     this.page = page;
+    /** @type {import('../pages/bulkupdate.js').BulkUpdate | undefined} */
+    this.bulkupdate = undefined;
+    /** @type {import('../pages/Campaigncreation.js').Campaigncreation | undefined} */
+    this.campaigncreation = undefined;
+    /** @type {import('../pages/moveleads_bulkupdate.js').MoveLeadsBulkUpdate | undefined} */
+    this.moveleads_bulkupdate = undefined;
+    /** @type {import('../pages/bulkupdate_delete.js').BulkUpdateDelete | undefined} */
+    this.bulkupdatedelete = undefined;
+    /** @type {import('../pages/Leadsverify.js').Leadsverify | undefined} */
+    this.leadsverify = undefined;
+    /** @type {import('../pages/loginpage.js').loginpage | undefined} */
+    this.loginPage = undefined;
+    /** @type {import('../pages/Pipelinecreation.js').Pipelinecreation | undefined} */
+    this.pipelinecreation = undefined;
+    /** @type {import('../pages/PipelineScenarios.js').PipelineScenarios | undefined} */
+    this.pipelinescenarios = undefined;
+    /** @type {import('../pages/campaign_deletion.js').CampaignDeletion | undefined} */
+    this.campaigndeletion = undefined;
   }
 }
+
+module.exports.CustomWorld = CustomWorld;
 
 setWorldConstructor(CustomWorld);
 
@@ -27,10 +47,42 @@ BeforeAll(async function () {
 });
 
 // Assign the same page to every scenario
+// Recover gracefully if the previous scenario caused the page to close (e.g. dialer auto-closes its tab)
 Before(async function () {
   this.browser = browser;
   this.context = context;
+
+  if (!page || page.isClosed()) {
+    const openPages = context.pages().filter(p => !p.isClosed());
+    if (openPages.length > 0) {
+      page = openPages[0];
+    } else {
+      page = await context.newPage();
+      page.setDefaultTimeout(60000);
+      page.setDefaultNavigationTimeout(60000);
+    }
+  }
+
   this.page = page;
+
+  // Dismiss any blocking overlay dialogs (e.g. Neo WhatsApp "Use here" dialog)
+  try {
+    const useHereBtn = this.page.locator('button:has-text("Use here")');
+    if (await useHereBtn.isVisible({ timeout: 2000 })) {
+      await useHereBtn.click();
+      await this.page.waitForTimeout(1000);
+      console.log("Dismissed blocking overlay dialog");
+    }
+  } catch (e) { /* no dialog present */ }
+
+  // Dismiss any remaining cdk overlay backdrop with Escape key
+  try {
+    const backdrop = this.page.locator('.cdk-overlay-backdrop-showing');
+    if (await backdrop.isVisible({ timeout: 1000 })) {
+      await this.page.keyboard.press('Escape');
+      await this.page.waitForTimeout(500);
+    }
+  } catch (e) { /* no backdrop present */ }
 });
 
 // Take screenshot on failure but don't close browser
