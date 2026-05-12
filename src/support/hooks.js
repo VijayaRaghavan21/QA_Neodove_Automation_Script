@@ -29,6 +29,8 @@ class CustomWorld extends World {
     this.pipelinescenarios = undefined;
     /** @type {import('../pages/campaign_deletion.js').CampaignDeletion | undefined} */
     this.campaigndeletion = undefined;
+    /** @type {import('../pages/Leadscenario.js').Leadscenario | undefined} */
+    this.leadscenario = undefined;
   }
 }
 
@@ -38,7 +40,7 @@ setWorldConstructor(CustomWorld);
 
 // Launch browser once before all tests
 BeforeAll(async function () {
-  browser = await chromium.launch({ headless: false, args: ['--start-maximized'] });
+  browser = await chromium.launch({ headless: true, args: ['--start-maximized'] });
   context = await browser.newContext({ viewport: null });
   page = await context.newPage();
   page.setDefaultTimeout(60000);

@@ -1,4 +1,3 @@
-@run
 Feature: Delete the created campaign and pipeline
 
   Scenario: Delete the Campaign

@@ -1,6 +1,3 @@
-
-
-@run
 Feature: Leads Verification
 
   Scenario: Validate uploaded Excel data appears correctly inside the campaign
