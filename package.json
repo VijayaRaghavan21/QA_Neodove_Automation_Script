@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx cucumber-js ./src/features/**/*.feature --require ./src/steps/**/*.js --require ./src/support/**/*.js --format json:./src/reports/allure-results/cucumber-report.json",
+    "test": "npx cucumber-js ./src/features/**/*.feature --require ./src/steps/**/*.js --require ./src/support/**/*.js --format json:./src/reports/allure-results/cucumber-report.json --format allure-cucumberjs/reporter",
     "allure:generate": "npx allure generate ./src/reports/allure-results --clean -o ./src/reports/allure-report",
     "allure:open": "npx allure open ./src/reports/allure-report",
     "report": "npm run allure:generate && npm run allure:open",

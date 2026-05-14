@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx cucumber-js:*)"
+      "Bash(npx cucumber-js:*)",
+      "Bash(ls c:/Users/NEODOVE-playwright-bdd-framework/*.js c:/Users/NEODOVE-playwright-bdd-framework/*.json)",
+      "mcp__Claude_in_Chrome__navigate",
+      "mcp__Claude_in_Chrome__browser_batch",
+      "mcp__Claude_in_Chrome__javascript_tool"
     ]
   }
 }

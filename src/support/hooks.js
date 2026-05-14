@@ -1,7 +1,14 @@
+const fs = require('fs');
+const path = require('path');
 const { BeforeAll, AfterAll, Before, After, AfterStep, setDefaultTimeout, setWorldConstructor, World } = require('@cucumber/cucumber');
 const { chromium } = require('@playwright/test');
 
 setDefaultTimeout(120000);
+
+/** GitLab / generic CI — enable video + stable viewport for Docker runners */
+function isCiRunner() {
+    return process.env.CI === 'true' || process.env.GITLAB_CI === 'true';
+}
 
 let browser, context, page;
 
@@ -40,12 +47,31 @@ setWorldConstructor(CustomWorld);
 
 // Launch browser once before all tests
 BeforeAll(async function () {
-  browser = await chromium.launch({ headless: true, args: ['--start-maximized'] });
-  context = await browser.newContext({ viewport: null });
+  const ci = isCiRunner();
+  const launchArgs = ci
+    ? ['--disable-dev-shm-usage', '--no-sandbox']
+    : ['--start-maximized'];
+
+  browser = await chromium.launch({ headless: true, args: launchArgs });
+
+  /** @type {import('@playwright/test').BrowserContextOptions} */
+  const contextOptions = ci
+    ? {
+          viewport: { width: 1920, height: 1080 },
+          recordVideo: {
+              dir: process.env.PLAYWRIGHT_VIDEO_DIR || path.join(process.cwd(), 'src/reports/test-artifacts/videos'),
+          },
+      }
+    : { viewport: null };
+
+  if (ci && contextOptions.recordVideo?.dir) {
+    fs.mkdirSync(contextOptions.recordVideo.dir, { recursive: true });
+  }
+
+  context = await browser.newContext(contextOptions);
   page = await context.newPage();
   page.setDefaultTimeout(60000);
   page.setDefaultNavigationTimeout(60000);
- 
 });
 
 // Assign the same page to every scenario
@@ -101,12 +127,25 @@ After(async function (scenario) {
       console.error('Result:', scenario.result);
     }
 
-    // ✅ 2️⃣ Screenshot (NON-BLOCKING)
+    // ✅ 2️⃣ Screenshot (NON-BLOCKING) — Allure attach + disk in CI for GitLab artifacts
     try {
       if (this.page && !this.page.isClosed()) {
         const screenshot = await this.page.screenshot({ timeout: 5000 });
         await this.attach(screenshot, 'image/png');
         console.log('📸 Screenshot attached');
+
+        if (isCiRunner()) {
+          const dir =
+            process.env.PLAYWRIGHT_SCREENSHOT_DIR ||
+            path.join(process.cwd(), 'src/reports/test-artifacts/screenshots');
+          fs.mkdirSync(dir, { recursive: true });
+          const safeName = (scenario.pickle?.name || 'scenario')
+            .replace(/[^\w.-]+/g, '_')
+            .slice(0, 80);
+          const filePath = path.join(dir, `${safeName}-${Date.now()}.png`);
+          fs.writeFileSync(filePath, screenshot);
+          console.log('📸 Screenshot saved for CI artifacts:', filePath);
+        }
       }
     } catch (err) {
       console.log('⚠️ Screenshot skipped:', err.message);

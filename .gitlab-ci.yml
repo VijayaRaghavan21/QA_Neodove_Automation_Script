@@ -1,0 +1,130 @@
+# =============================================================================
+# Playwright + Cucumber E2E — GitLab CI (production-oriented)
+# =============================================================================
+#
+# Runs on: default branch named `main` only (push + scheduled pipelines).
+#
+# GitLab → Settings → CI/CD → Variables (recommended: Masked; Protected if needed):
+#   SLACK_WEBHOOK_URL     Incoming webhook URL for #channel notifications
+#   (optional) BASE_URL   App base URL if you later wire env-driven navigation
+#   (optional) NPM_TOKEN  For private npm registries only
+#
+# Artifacts (30 days): Allure HTML + raw results, Cucumber JSON, videos, screenshots.
+# Slack: sent after job finishes (success or failure) when SLACK_WEBHOOK_URL is set.
+#
+# Retry: `retry: 1` re-runs the whole job once on failure (runner/infrastructure flake).
+# Per-scenario retries require Cucumber/Playwright test-level config (not in this file).
+#
+# Image: Playwright official (Chromium + system deps). Node matches LTS used locally.
+# =============================================================================
+
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "web"
+    - when: never
+
+default:
+  image: mcr.microsoft.com/playwright:v1.56.1-jammy
+
+variables:
+  FF_USE_FASTZIP: "true"
+  npm_config_cache: "$CI_PROJECT_DIR/.npm"
+  NODE_OPTIONS: "--max-old-space-size=4096"
+  # Writable dirs for Playwright (hooks use these when GITLAB_CI is set)
+  PLAYWRIGHT_VIDEO_DIR: "$CI_PROJECT_DIR/src/reports/test-artifacts/videos"
+  PLAYWRIGHT_SCREENSHOT_DIR: "$CI_PROJECT_DIR/src/reports/test-artifacts/screenshots"
+  ALLURE_RESULTS_DIR: "src/reports/allure-results"
+  ALLURE_REPORT_DIR: "src/reports/allure-report"
+
+cache:
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - .npm/
+
+stages:
+  - e2e
+
+playwright_e2e:
+  stage: e2e
+  resource_group: playwright-e2e-$CI_COMMIT_REF_SLUG
+  interruptible: true
+  timeout: 3h
+  retry: 1
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+
+  before_script:
+    - node --version
+    - npm --version
+    - mkdir -p "$PLAYWRIGHT_VIDEO_DIR" "$PLAYWRIGHT_SCREENSHOT_DIR" "$ALLURE_RESULTS_DIR"
+    - npm ci
+    - npx playwright install --with-deps chromium
+
+  script:
+    - export CI=true
+    - export GITLAB_CI=true
+    - |
+      set +e
+      npm run test
+      TEST_EXIT=$?
+      set -e
+
+      echo "Generating Allure report from ${ALLURE_RESULTS_DIR}..."
+      npx allure generate "$ALLURE_RESULTS_DIR" --clean -o "$ALLURE_REPORT_DIR" || echo "Allure generate skipped or failed"
+
+      export ALLURE_ARTIFACT_URL="${CI_PROJECT_URL}/-/jobs/${CI_JOB_ID}/artifacts/browse/${ALLURE_REPORT_DIR}/"
+      export ALLURE_INDEX_URL="${CI_PROJECT_URL}/-/jobs/${CI_JOB_ID}/artifacts/file/${ALLURE_REPORT_DIR}/index.html"
+      if [ "${TEST_EXIT}" -eq 0 ]; then
+        export STATUS_EMOJI=":white_check_mark:"
+        export STATUS_TEXT="passed"
+      else
+        export STATUS_EMOJI=":x:"
+        export STATUS_TEXT="failed"
+      fi
+      export COMMIT_SUBJECT
+      COMMIT_SUBJECT="$(printf '%s' "${CI_COMMIT_MESSAGE}" | head -n 1 | head -c 200)"
+
+      node <<'SLACKNODE'
+      const fs = require('fs');
+      const webhook = process.env.SLACK_WEBHOOK_URL;
+      const payload = {
+        text: [
+          `${process.env.STATUS_EMOJI} *Playwright E2E* — ${process.env.CI_PROJECT_NAME}`,
+          `*Branch:* \`${process.env.CI_COMMIT_BRANCH}\``,
+          `*Commit:* \`${process.env.CI_COMMIT_SHORT_SHA}\` ${process.env.COMMIT_SUBJECT || ''}`,
+          `*Pipeline:* ${process.env.CI_PIPELINE_URL}`,
+          `*Job:* ${process.env.CI_JOB_URL}`,
+          `*Result:* ${process.env.STATUS_TEXT}`,
+          `*Allure (browse):* ${process.env.ALLURE_ARTIFACT_URL}`,
+          `*Allure index:* ${process.env.ALLURE_INDEX_URL}`,
+        ].join('\n'),
+      };
+      fs.writeFileSync('/tmp/slack-e2e-payload.json', JSON.stringify(payload));
+      SLACKNODE
+
+      if [ -n "${SLACK_WEBHOOK_URL}" ]; then
+        curl -sS -m 30 -X POST -H 'Content-type: application/json' \
+          --data-binary @/tmp/slack-e2e-payload.json "${SLACK_WEBHOOK_URL}" \
+          && echo "Slack notification sent." \
+          || echo "Slack notification failed (non-blocking)."
+      else
+        echo "SLACK_WEBHOOK_URL is not set — skipping Slack notification."
+      fi
+
+      exit "${TEST_EXIT}"
+
+  artifacts:
+    when: always
+    expire_in: 30 days
+    paths:
+      - "${ALLURE_REPORT_DIR}/"
+      - "${ALLURE_RESULTS_DIR}/"
+      - "src/reports/cucumber-report.json"
+      - "src/reports/test-artifacts/"
+
+  after_script:
+    - echo "E2E job finished (see job status for pass/fail)."

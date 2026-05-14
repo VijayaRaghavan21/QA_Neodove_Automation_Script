@@ -8,7 +8,7 @@
       "allure-cucumberjs/reporter"
     ],
     "formatOptions": {
-      "resultsDir": "./allure-results"
+      "resultsDir": "./src/reports/allure-results"
     },
     "publishQuiet": true
   }
