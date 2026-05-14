@@ -1,29 +1,38 @@
-const { Given, When, Then } = require('@cucumber/cucumber');
-const { expect } = require('@playwright/test');
-const { loginpage } = require('../pages/loginpage');
+import { Given, When, Then } from '@cucumber/cucumber';
+import { loginpage } from '../pages/loginpage.js';
 
+/** @typedef {import('../support/hooks.js').CustomWorld} World */
 
-Given('I open the login page', async function () {
+Given('I open the login page', /** @this {World} */ async function () {
+  try {
     this.loginPage = new loginpage(this.page);
     await this.loginPage.navigate_to_login_Url();
     await this.attach('Navigated to Login Page', 'text/plain');
-
-
+  } catch (err) {
+    console.error('Step failed:', err.message);
+    await this.attach('Step failed: ' + err.message, 'text/plain');
+    throw err;
+  }
 });
 
-When('I login with valid credentials', async function () {
-    await this.loginPage.login('2345678901', '12345');
+When('I login with valid credentials', /** @this {World} */ async function () {
+  try {
+    await this.loginPage.login('5432154321', '12345');
     await this.attach('Logged in successfully', 'text/plain');
-
-
-
+  } catch (err) {
+    console.error('Step failed:', err.message);
+    await this.attach('Step failed: ' + err.message, 'text/plain');
+    throw err;
+  }
 });
 
-Then('I should see the dashboard', async function () {
-    // Verify we're on the dashboard by checking for a dashboard-specific element
-
+Then('I should see the dashboard', /** @this {World} */ async function () {
+  try {
     await this.loginPage.verify_dashboard_page();
     await this.attach('Dashboard page verified', 'text/plain');
-
-
+  } catch (err) {
+    console.error('Step failed:', err.message);
+    await this.attach('Step failed: ' + err.message, 'text/plain');
+    throw err;
+  }
 });
